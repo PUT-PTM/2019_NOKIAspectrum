@@ -13,7 +13,7 @@
                 <GradientStop Color="#FF3A3737" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button HorizontalAlignment="Left" Margin="154,198,0,0" VerticalAlignment="Top" Width="45" Height="46" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        <Button Content="Button" HorizontalAlignment="Left" Margin="154,198,0,0" VerticalAlignment="Top" Width="45" Height="46" BorderBrush="{x:Null}" Foreground="{x:Null}" Name="PrzyciskPlay" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="Assets/playButton.png"/>
             </Button.OpacityMask>
@@ -21,7 +21,7 @@
                 <ImageBrush ImageSource="Assets/playButton.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="109,198,0,0" VerticalAlignment="Top" Width="45" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="46">
+        <Button Content="Button" HorizontalAlignment="Left" Margin="109,198,0,0" VerticalAlignment="Top" Width="45" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="46" Name="PrzyciskPause" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="Assets/pauseButton.png" Stretch="Uniform"/>
             </Button.OpacityMask>
@@ -29,7 +29,7 @@
                 <ImageBrush Stretch="Uniform" ImageSource="Assets/pauseButton.png"/>
             </Button.Background>
         </Button>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="239,204,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="35">
+        <Button Content="Button" HorizontalAlignment="Left" Margin="239,204,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="35" Name="PrzyciskNext" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="Assets/next.png" Stretch="Uniform"/>
             </Button.OpacityMask>
@@ -37,7 +37,7 @@
                 <ImageBrush Stretch="Uniform" ImageSource="Assets/next.png"/>
             </Button.Background>
         </Button>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="69,204,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="35">
+        <Button Content="Button" HorizontalAlignment="Left" Margin="69,204,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="35" Name="PrzyciskPrevious" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="Assets/previous.png" Stretch="Uniform"/>
             </Button.OpacityMask>
@@ -45,13 +45,54 @@
                 <ImageBrush ImageSource="Assets/previous.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="204,204,0,0" VerticalAlignment="Top" Width="35" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="35">
+        <Button  Content="Button" HorizontalAlignment="Left" Margin="204,204,0,0" VerticalAlignment="Top" Width="35" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="35" Name="PrzyciskStop" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="DarkGoldenrod"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
             <Button.Background>
-                <ImageBrush ImageSource="Assets/stopButton.png" Stretch="Uniform"/>
-            </Button.Background>
-            <Button.OpacityMask>
-                <ImageBrush ImageSource="Assets/stopButton.png" Stretch="Uniform"/>
-            </Button.OpacityMask>
+                    <ImageBrush ImageSource="Assets/stopButton.png" Stretch="Uniform"/>
+                </Button.Background>
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="Assets/stopButton.png" Stretch="Uniform"/>
+                </Button.OpacityMask>
+            
+        </Button>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="176,100,0,0" VerticalAlignment="Top" Width="75">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="DarkGoldenrod"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
 
     </Grid>
