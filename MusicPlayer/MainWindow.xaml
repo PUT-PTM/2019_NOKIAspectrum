@@ -13,39 +13,10 @@
                 <GradientStop Color="#FF3A3737" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="154,198,0,0" VerticalAlignment="Top" Width="45" Height="46" BorderBrush="{x:Null}" Foreground="{x:Null}" Name="PrzyciskPlay" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
-            <Button.OpacityMask>
-                <ImageBrush ImageSource="Assets/playButton.png"/>
-            </Button.OpacityMask>
+        <Button Name="playButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,0,0" Click="play_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver">
             <Button.Background>
-                <ImageBrush ImageSource="Assets/playButton.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Assets/playButton.png" Stretch="Uniform"></ImageBrush>
             </Button.Background>
-        </Button>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="109,198,0,0" VerticalAlignment="Top" Width="45" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="46" Name="PrzyciskPause" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
-            <Button.OpacityMask>
-                <ImageBrush ImageSource="Assets/pauseButton.png" Stretch="Uniform"/>
-            </Button.OpacityMask>
-            <Button.Background>
-                <ImageBrush Stretch="Uniform" ImageSource="Assets/pauseButton.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="239,204,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="35" Name="PrzyciskNext" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
-            <Button.OpacityMask>
-                <ImageBrush ImageSource="Assets/next.png" Stretch="Uniform"/>
-            </Button.OpacityMask>
-            <Button.Background>
-                <ImageBrush Stretch="Uniform" ImageSource="Assets/next.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="69,204,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Foreground="{x:Null}" Height="35" Name="PrzyciskPrevious" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
-            <Button.OpacityMask>
-                <ImageBrush ImageSource="Assets/previous.png" Stretch="Uniform"/>
-            </Button.OpacityMask>
-            <Button.Background>
-                <ImageBrush ImageSource="Assets/previous.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button  Content="Button" HorizontalAlignment="Left" Margin="204,204,0,0" VerticalAlignment="Top" Width="35" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="35" Name="PrzyciskStop" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Green"/>
@@ -60,20 +31,16 @@
                     </Setter>
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="DarkGoldenrod"/>
+                            <Setter Property="Background" Value="Red"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             </Button.Style>
-            <Button.Background>
-                    <ImageBrush ImageSource="Assets/stopButton.png" Stretch="Uniform"/>
-                </Button.Background>
-                <Button.OpacityMask>
-                    <ImageBrush ImageSource="Assets/stopButton.png" Stretch="Uniform"/>
-                </Button.OpacityMask>
-            
         </Button>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="176,100,0,0" VerticalAlignment="Top" Width="75">
+        <Button Name="stopButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,175,0" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver">
+            <Button.Background>
+                <ImageBrush ImageSource="Assets/stopButton.png" Stretch="Uniform"></ImageBrush>
+            </Button.Background>
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="Green"/>
@@ -88,12 +55,59 @@
                     </Setter>
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="DarkGoldenrod"/>
+                            <Setter Property="Background" Value="Red"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             </Button.Style>
         </Button>
-
+        <Button Name="nextButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="100,75,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver">
+            <Button.Background>
+                <ImageBrush ImageSource="Assets/nextButton.png" Stretch="Uniform"></ImageBrush>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Red"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Name="previousButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,100,0" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver">
+            <Button.Background>
+                <ImageBrush ImageSource="Assets/previousButton.png" Stretch="Uniform"></ImageBrush>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Red"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>

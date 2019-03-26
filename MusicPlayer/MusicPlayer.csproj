@@ -100,11 +100,22 @@
     <Resource Include="Assets\playButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\next.png" />
-    <Resource Include="Assets\previous.png" />
+    <Resource Include="Assets\nextButton.png" />
+    <Resource Include="Assets\previousButton.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\stopButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\playButton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\pauseButton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\nextButton2.png" />
+    <Resource Include="Assets\previousButton2.png" />
+    <Resource Include="Assets\stopButton2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

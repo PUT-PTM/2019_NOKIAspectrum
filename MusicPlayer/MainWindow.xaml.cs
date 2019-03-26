@@ -20,27 +20,50 @@ namespace MusicPlayer
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool isMusicPlay = false;
         public MainWindow()
         {
+            
             InitializeComponent();
         }
 
-        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        private void play_Click(object sender, RoutedEventArgs e)
         {
-            PrzyciskStop.Background = Brushes.Orange;
-            PrzyciskPlay.Background = Brushes.Orange;
-            PrzyciskPause.Background = Brushes.Orange;
-            PrzyciskNext.Background = Brushes.Orange;
-            PrzyciskPrevious.Background = Brushes.Orange;
+            ImageBrush tempImg = new ImageBrush();
+            if (!isMusicPlay)
+            {
+                tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
+                playButton.Name = "pauseButton";
+                isMusicPlay = true;
+            }
+            else
+            {
+                tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/playButton.png"));
+                playButton.Name = "playButton";
+                isMusicPlay = false;
+            }
+            playButton.Background = tempImg;
+        }
+        private void mouseOver(object sender, MouseEventArgs e)
+        {
+            var button = (Button)sender;
+            ImageBrush tempImg = new ImageBrush();
+            string tempURL = "pack://application:,,,/Assets/" + button.Name + "2.png";
+            tempImg.ImageSource = new BitmapImage(new Uri(@tempURL));
+            button.Background = tempImg;
+            button.Height = 51;
+            button.Width = 51;
         }
 
-        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        private void mouseLeave(object sender, MouseEventArgs e)
         {
-            PrzyciskStop.Background = Brushes.White;
-            PrzyciskPlay.Background = Brushes.White;
-            PrzyciskPause.Background = Brushes.White;
-            PrzyciskNext.Background = Brushes.White;
-            PrzyciskPrevious.Background = Brushes.White;
+            var button = (Button)sender;
+            ImageBrush tempImg = new ImageBrush();
+            string tempURL = "pack://application:,,,/Assets/" + button.Name + ".png";
+            tempImg.ImageSource = new BitmapImage(new Uri(@tempURL));
+            button.Background = tempImg;
+            button.Height = 45;
+            button.Width = 45;
         }
     }
 }
