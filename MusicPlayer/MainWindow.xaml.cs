@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Media;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +22,8 @@ namespace MusicPlayer
     public partial class MainWindow : Window
     {
         bool isMusicPlay = false;
+        List<string[]> listOfFiles = new List<string[]>();
+        string[] files;
         public MainWindow()
         {
             
@@ -75,6 +78,23 @@ namespace MusicPlayer
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+        }
+        private System.Windows.Media.MediaPlayer _player;
+        private void Rectangle_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                listOfFiles.Add(files);
+                currentPlay.Text = files[0];
+                if (listOfFiles.Count() == 1)
+                {
+                    _player = new System.Windows.Media.MediaPlayer();
+                    Uri uri = new Uri(files[0]);
+                    _player.Open(uri);
+                    _player.Play();
+                }
+            }
         }
     }
 }

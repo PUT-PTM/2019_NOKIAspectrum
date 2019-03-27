@@ -13,7 +13,7 @@
                 <GradientStop Color="#FF3A3737" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Rectangle MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="350" Stroke="Black" VerticalAlignment="Top" Width="350" Opacity="0" Margin="0,0,0,-0.2" />
+        <Rectangle MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="350" Stroke="Black" VerticalAlignment="Top" Width="350" Opacity="0" Margin="0,0,0,-0.2" Drop="Rectangle_Drop" AllowDrop="True"/>
         <Button Name="playButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,0,0" Click="play_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver" Cursor="Hand">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/playButton.png" Stretch="Uniform"></ImageBrush>
@@ -134,5 +134,6 @@
                 </Style>
             </Button.Style>
         </Button>
+        <TextBlock Name="currentPlay" HorizontalAlignment="Center" Height="23" Margin="0,0,0,15" Text="Brak elementów do odtwarzania" VerticalAlignment="Center" Width="350" FontFamily="Candara Light" FontSize="20" TextAlignment="Center" Foreground="White"/>
     </Grid>
 </Window>
