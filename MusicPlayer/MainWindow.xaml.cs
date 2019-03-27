@@ -29,17 +29,18 @@ namespace MusicPlayer
 
         private void play_Click(object sender, RoutedEventArgs e)
         {
+            var button = (Button)sender;
             ImageBrush tempImg = new ImageBrush();
             if (!isMusicPlay)
             {
-                tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
-                playButton.Name = "pauseButton";
+                tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton2.png"));
+                button.Name = "pauseButton";
                 isMusicPlay = true;
             }
             else
             {
-                tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/playButton.png"));
-                playButton.Name = "playButton";
+                tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/playButton2.png"));
+                button.Name = "playButton";
                 isMusicPlay = false;
             }
             playButton.Background = tempImg;
@@ -64,6 +65,16 @@ namespace MusicPlayer
             button.Background = tempImg;
             button.Height = 45;
             button.Width = 45;
+        }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
     }
 }

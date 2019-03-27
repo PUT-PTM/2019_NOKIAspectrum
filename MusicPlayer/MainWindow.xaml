@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicPlayer"
         mc:Ignorable="d"
-        Title="STM32 Music Player" Height="350" Width="350">
+        Title="STM32 Music Player" Height="350" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -13,7 +13,8 @@
                 <GradientStop Color="#FF3A3737" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button Name="playButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,0,0" Click="play_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver">
+        <Rectangle MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="350" Stroke="Black" VerticalAlignment="Top" Width="350" Opacity="0" Margin="0,0,0,-0.2" />
+        <Button Name="playButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,0,0" Click="play_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver" Cursor="Hand">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/playButton.png" Stretch="Uniform"></ImageBrush>
             </Button.Background>
@@ -37,7 +38,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Name="stopButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,175,0" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver">
+        <Button Name="stopButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,175,0" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver" Cursor="Hand">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/stopButton.png" Stretch="Uniform"></ImageBrush>
             </Button.Background>
@@ -61,7 +62,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Name="nextButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="100,75,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver">
+        <Button Name="nextButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="100,75,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver" Cursor="Hand">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/nextButton.png" Stretch="Uniform"></ImageBrush>
             </Button.Background>
@@ -85,9 +86,33 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Name="previousButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,100,0" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver">
+        <Button Name="previousButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,100,0" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver" Cursor="Hand">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/previousButton.png" Stretch="Uniform"></ImageBrush>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Red"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Name="closeButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="320,0,0,315" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver" Click="closeButton_Click" Cursor="Hand">
+            <Button.Background>
+                <ImageBrush ImageSource="Assets/closeButton.png" Stretch="Uniform"></ImageBrush>
             </Button.Background>
             <Button.Style>
                 <Style TargetType="{x:Type Button}">

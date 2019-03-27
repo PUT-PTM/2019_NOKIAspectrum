@@ -117,5 +117,9 @@
     <Resource Include="Assets\previousButton2.png" />
     <Resource Include="Assets\stopButton2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\closeButton.png" />
+    <Resource Include="Assets\closeButton2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
