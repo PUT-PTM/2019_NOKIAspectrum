@@ -68,6 +68,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="playlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -121,5 +122,6 @@
     <Resource Include="Assets\closeButton.png" />
     <Resource Include="Assets\closeButton2.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

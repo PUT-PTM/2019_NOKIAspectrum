@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -24,9 +25,9 @@ namespace MusicPlayer
         bool isMusicPlay = false;
         List<string[]> listOfFiles = new List<string[]>();
         string[] files;
+        Playlist x = new Playlist();
         public MainWindow()
         {
-            
             InitializeComponent();
         }
 
@@ -38,13 +39,21 @@ namespace MusicPlayer
             {
                 tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton2.png"));
                 button.Name = "pauseButton";
-                isMusicPlay = true;
+                if (listOfFiles.Count() > 0)
+                {
+                    _player.Play();
+                    isMusicPlay = true;
+                }
             }
             else
             {
                 tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/playButton2.png"));
                 button.Name = "playButton";
-                isMusicPlay = false;
+                if (isMusicPlay)
+                {
+                    _player.Pause();
+                    isMusicPlay = false;
+                }
             }
             playButton.Background = tempImg;
         }
@@ -86,14 +95,38 @@ namespace MusicPlayer
             {
                 files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 listOfFiles.Add(files);
-                currentPlay.Text = files[0];
                 if (listOfFiles.Count() == 1)
                 {
+                    currentPlay.Text = x.GetSongName(files[0]);
                     _player = new System.Windows.Media.MediaPlayer();
                     Uri uri = new Uri(files[0]);
                     _player.Open(uri);
                     _player.Play();
+                    isMusicPlay = true;
                 }
+            }
+        }
+
+        private void stopButton_Click(object sender, RoutedEventArgs e)
+        {
+            _player.Stop();
+            isMusicPlay = false;
+        }
+        private void Volume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (_player != null)
+                _player.Volume = e.NewValue;
+        }
+
+        private void Volume_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (_player != null && e.Delta > 0)
+            {
+                _player.Volume += 0.02;
+            }
+            else
+            {
+                _player.Volume -= 0.02;
             }
         }
     }

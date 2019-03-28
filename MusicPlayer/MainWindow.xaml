@@ -6,14 +6,13 @@
         xmlns:local="clr-namespace:MusicPlayer"
         mc:Ignorable="d"
         Title="STM32 Music Player" Height="350" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
-    <Grid>
+    <Grid Drop="Rectangle_Drop" MouseWheel="Volume_MouseWheel" AllowDrop="True">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                 <GradientStop Color="#FF1B1B1B" Offset="0"/>
                 <GradientStop Color="#FF3A3737" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Rectangle MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="350" Stroke="Black" VerticalAlignment="Top" Width="350" Opacity="0" Margin="0,0,0,-0.2" Drop="Rectangle_Drop" AllowDrop="True"/>
         <Button Name="playButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,0,0" Click="play_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver" Cursor="Hand">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/playButton.png" Stretch="Uniform"></ImageBrush>
@@ -38,7 +37,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Name="stopButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,175,0" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver" Cursor="Hand">
+        <Button Name="stopButton" Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,75,175,0" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseLeave="mouseLeave" MouseEnter="mouseOver" Cursor="Hand" Click="stopButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/stopButton.png" Stretch="Uniform"></ImageBrush>
             </Button.Background>
@@ -134,6 +133,9 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBlock Name="currentPlay" HorizontalAlignment="Center" Height="23" Margin="0,0,0,15" Text="Brak elementów do odtwarzania" VerticalAlignment="Center" Width="350" FontFamily="Candara Light" FontSize="20" TextAlignment="Center" Foreground="White"/>
+        <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,30" Name="marqueeBox" Width="350">
+            <TextBlock Name="currentPlay" HorizontalAlignment="Center" Height="23" Margin="0,0,0,0" Text="Brak elementów do odtwarzania" VerticalAlignment="Center" Width="350" FontFamily="Candara Light" FontSize="20" TextAlignment="Center" Foreground="White"/>
+        </Canvas>
+        <Slider Name="Volume" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="87" Margin="253,202,0,0" Minimum="0" Maximum="1" ValueChanged="Volume_ValueChanged" IsMoveToPointEnabled="True" Cursor="Hand"/>
     </Grid>
 </Window>
