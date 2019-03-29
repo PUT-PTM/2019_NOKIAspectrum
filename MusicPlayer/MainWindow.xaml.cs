@@ -26,6 +26,8 @@ namespace MusicPlayer
         List<string[]> listOfFiles = new List<string[]>();
         string[] files;
         Playlist x = new Playlist();
+        private System.Windows.Media.MediaPlayer _player;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -57,6 +59,7 @@ namespace MusicPlayer
             }
             playButton.Background = tempImg;
         }
+
         private void mouseOver(object sender, MouseEventArgs e)
         {
             var button = (Button)sender;
@@ -83,13 +86,13 @@ namespace MusicPlayer
         {
             this.Close();
         }
-        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
-        private System.Windows.Media.MediaPlayer _player;
-        private void Rectangle_Drop(object sender, DragEventArgs e)
+
+        private void Grid_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
@@ -112,6 +115,7 @@ namespace MusicPlayer
             _player.Stop();
             isMusicPlay = false;
         }
+
         private void Volume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (_player != null)
@@ -124,10 +128,11 @@ namespace MusicPlayer
             {
                 _player.Volume += 0.02;
             }
-            else
+            else if(_player != null && e.Delta < 0)
             {
                 _player.Volume -= 0.02;
             }
+            this.Volume.Value = _player.Volume;
         }
     }
 }

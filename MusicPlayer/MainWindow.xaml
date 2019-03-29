@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MusicPlayer"
         mc:Ignorable="d"
         Title="STM32 Music Player" Height="350" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
-    <Grid Drop="Rectangle_Drop" MouseWheel="Volume_MouseWheel" AllowDrop="True">
+    <Grid Drop="Grid_Drop" MouseWheel="Volume_MouseWheel" AllowDrop="True" MouseLeftButtonDown="Window_MouseLeftButtonDown">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                 <GradientStop Color="#FF1B1B1B" Offset="0"/>
