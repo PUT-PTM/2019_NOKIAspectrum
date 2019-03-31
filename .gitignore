@@ -31,3 +31,5 @@ MusicPlayer/obj/Release/MusicPlayer_MarkupCompile.cache
 MusicPlayer/obj/Release/MusicPlayer_MarkupCompile.lref
 MusicPlayer/obj/Debug/MainWindow.g.cs
 *.cs
+MusicPlayer/obj/Debug/MusicPlayer_MarkupCompile.i.lref
+MusicPlayer/obj/Debug/App.baml
