@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Windows.Data;
 
 namespace MusicPlayer
 {
      public class Playlist
     {
-        List<string[]> listOfFiles;
+        public List<string[]> listOfFiles = new List<string[]>();
+        public byte playlistSize;
 
-        public byte Size() //Return number of files
+        public void Size() //Return number of files
         {
-            byte size = (byte)listOfFiles.Count();
-            return size;
+            playlistSize = (byte)listOfFiles.Count();
         }
         public string GetSongName(string filePath)
         {
@@ -28,6 +29,13 @@ namespace MusicPlayer
             file[0] = filePath[0];
             file[1] = GetSongName(filePath[0]);
             listOfFiles.Add(file);
+            Size();
+        }
+
+        public void RemoveFile(string[] file)
+        {
+            listOfFiles.Remove(file);
+            Size();
         }
     }
 

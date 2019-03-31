@@ -68,6 +68,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NegatingConvrter.cs" />
+    <Compile Include="player.cs" />
     <Compile Include="playlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -95,33 +97,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\pauseButton.png" />
+    <Resource Include="Assets\stopButton.png" />
+    <Resource Include="Assets\stopButton2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\playButton.png" />
+    <Resource Include="Assets\previousButton.png" />
+    <Resource Include="Assets\previousButton2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\nextButton.png" />
-    <Resource Include="Assets\previousButton.png" />
+    <Resource Include="Assets\nextButton2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\stopButton.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Assets\playButton.png" />
     <Resource Include="Assets\playButton2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\pauseButton.png" />
     <Resource Include="Assets\pauseButton2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\nextButton2.png" />
-    <Resource Include="Assets\previousButton2.png" />
-    <Resource Include="Assets\stopButton2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\closeButton.png" />
     <Resource Include="Assets\closeButton2.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
