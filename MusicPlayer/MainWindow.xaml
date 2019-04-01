@@ -38,7 +38,8 @@
                 <ImageBrush Stretch="Uniform" ImageSource="Assets/previousButton.png"/>
             </Button.Background>
         </Button>
-        <ProgressBar Name="volume" Height="15" Width="100" Margin="240,85,0,0" Minimum="0" Maximum="100" Cursor="Hand"/>
+        <ProgressBar Name="volume" Height="15" Width="100" Margin="240,85,0,0" Minimum="0" Maximum="100" Cursor="Hand" Foreground="#FFFA6000" Value="50" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <TextBlock Width="100" Height="15" Margin="240,85,0,0" Foreground="WhiteSmoke" FontSize="10" TextAlignment="Center">Volume<TextBlock Name="volumeValue" Margin="3,0,0,0" Width="22.5" FontSize="10" TextAlignment="Center" Foreground="WhiteSmoke" Text="50%"></TextBlock></TextBlock>
         <StackPanel Orientation="Horizontal" x:Name="stack" Grid.Column="0" Margin="0">
             <StackPanel.Resources>
                 <local:NegatingConverter x:Key="NegatingConverter" />

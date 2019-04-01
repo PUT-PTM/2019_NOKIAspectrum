@@ -44,7 +44,10 @@ namespace MusicPlayer
             closeButton.MouseLeave += MouseLeaveButton;
             _window.Drop += DropFile;
             _window.MouseLeftButtonDown += WindowDrag;
+            _window.MouseWheel += VolumeChange;
+            player._player.MediaEnded += SongEnded;
         }
+
         public void ClickEvent(object sender, RoutedEventArgs e)
         {
             var tempBtn = (Button)sender;
@@ -75,17 +78,22 @@ namespace MusicPlayer
                         tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/playButton.png"));
                         playButton.Background = tempImg;
                         playButton.Name = "playButton";
+                        isMusicPlay = false;
                     }
                     break;
                 case "nextButton": //next
-                    /*
-                    Dopisać zmianę piosenki 
-                    */
+                    player.NextSong(playlist, txtKron);
+                    tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
+                    playButton.Background = tempImg;
+                    playButton.Name = "pauseButton";
+                    isMusicPlay = true;
                     break;
                 case "previousButton": //previous
-                    /*
-                    Dopisać zmianę piosenki 
-                    */
+                    player.PreviousSong(playlist, txtKron);
+                    tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
+                    playButton.Background = tempImg;
+                    playButton.Name = "pauseButton";
+                    isMusicPlay = true;
                     break;
                 case "closeButton": //close
                     this.Close();
@@ -135,6 +143,18 @@ namespace MusicPlayer
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+        }
+        private void SongEnded(object sender, EventArgs e)
+        {
+            player.NextSong(playlist, txtKron);
+        }
+        private void VolumeChange(object sender, MouseWheelEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                player.Volume(0.02, volume, volumeValue, isMusicPlay);
+            }
+            else player.Volume(-0.02, volume, volumeValue, isMusicPlay);
         }
     }
 }
