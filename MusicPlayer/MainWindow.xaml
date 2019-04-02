@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicPlayer"
         mc:Ignorable="d"
-        Title="STM32 Music Player" Height="350" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
+        Title="STM32 Music Player" Height="350" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Icon="Assets/logo.png">
     <Grid Name="_window">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -38,8 +38,9 @@
                 <ImageBrush Stretch="Uniform" ImageSource="Assets/previousButton.png"/>
             </Button.Background>
         </Button>
-        <ProgressBar Name="volume" Height="15" Width="100" Margin="240,85,0,0" Minimum="0" Maximum="100" Cursor="Hand" Foreground="#FFFA6000" Value="50" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        <TextBlock Width="100" Height="15" Margin="240,85,0,0" Foreground="WhiteSmoke" FontSize="10" TextAlignment="Center">Volume<TextBlock Name="volumeValue" Margin="3,0,0,0" Width="22.5" FontSize="10" TextAlignment="Center" Foreground="WhiteSmoke" Text="50%"></TextBlock></TextBlock>
+        <ProgressBar Name="volume" Height="15" Width="100" Margin="240,85,0,0" Minimum="0" Maximum="100" Cursor="Hand" Foreground="#FFFA6000" Value="10" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <TextBlock Width="100" Height="15" Margin="240,85,0,0" Foreground="WhiteSmoke" FontSize="10" TextAlignment="Center">Volume<TextBlock Name="volumeValue" Margin="2,0,0,0" Width="22.5" FontSize="10" TextAlignment="Center" Foreground="WhiteSmoke" Text="10%"></TextBlock></TextBlock>
+        <ProgressBar Name="progress" Width="350" Height="15" Cursor="Hand" Foreground="#FFFA6000" Minimum="0" Maximum="100" Value="0" Margin="0,180,0,0" Background="{x:Null}" BorderBrush="{x:Null}"/>
         <StackPanel Orientation="Horizontal" x:Name="stack" Grid.Column="0" Margin="0">
             <StackPanel.Resources>
                 <local:NegatingConverter x:Key="NegatingConverter" />

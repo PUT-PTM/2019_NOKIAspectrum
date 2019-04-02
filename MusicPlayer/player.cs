@@ -21,7 +21,7 @@ namespace MusicPlayer
     {
         public System.Windows.Media.MediaPlayer _player;
         public int currentSongID =-1;
-        private double volume = 0.5;
+        public double volume = 0.1;
 
         public void SongNameLabel(Label txtKron, string content)
         {
@@ -30,6 +30,7 @@ namespace MusicPlayer
         public void Play(Label txtKron, Playlist playlist)
         {
             _player = new System.Windows.Media.MediaPlayer();
+            _player.MediaEnded += delegate { NextSong(playlist, txtKron); };
             SongNameLabel(txtKron, playlist.listOfFiles[0][1]);
             Uri uri = new Uri(playlist.listOfFiles[0][0]);
             _player.Open(uri);
@@ -123,6 +124,10 @@ namespace MusicPlayer
                     volumeValue.Text = (Math.Round(volume, 2) * 100) + "%";
                 }
             }   
+        }
+        public void UpdateProgressBar(ProgressBar progress)
+        {
+
         }
     }
 }

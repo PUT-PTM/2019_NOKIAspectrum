@@ -45,7 +45,6 @@ namespace MusicPlayer
             _window.Drop += DropFile;
             _window.MouseLeftButtonDown += WindowDrag;
             _window.MouseWheel += VolumeChange;
-            player._player.MediaEnded += SongEnded;
         }
 
         public void ClickEvent(object sender, RoutedEventArgs e)
@@ -143,10 +142,6 @@ namespace MusicPlayer
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
-        }
-        private void SongEnded(object sender, EventArgs e)
-        {
-            player.NextSong(playlist, txtKron);
         }
         private void VolumeChange(object sender, MouseWheelEventArgs e)
         {
