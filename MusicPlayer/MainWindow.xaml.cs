@@ -81,18 +81,24 @@ namespace MusicPlayer
                     }
                     break;
                 case "nextButton": //next
-                    player.NextSong(playlist, txtKron);
-                    tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
-                    playButton.Background = tempImg;
-                    playButton.Name = "pauseButton";
-                    isMusicPlay = true;
+                    if (playlist.playlistSize !=0)
+                    {
+                        player.NextSong(playlist, txtKron, progress);
+                        tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
+                        playButton.Background = tempImg;
+                        playButton.Name = "pauseButton";
+                        isMusicPlay = true;
+                    }
                     break;
                 case "previousButton": //previous
-                    player.PreviousSong(playlist, txtKron);
-                    tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
-                    playButton.Background = tempImg;
-                    playButton.Name = "pauseButton";
-                    isMusicPlay = true;
+                    if (playlist.playlistSize != 0)
+                    {
+                        player.PreviousSong(playlist, txtKron, progress);
+                        tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
+                        playButton.Background = tempImg;
+                        playButton.Name = "pauseButton";
+                        isMusicPlay = true;
+                    }
                     break;
                 case "closeButton": //close
                     this.Close();
@@ -129,7 +135,7 @@ namespace MusicPlayer
                 playlist.AddFile(tempFile);
                 if (!isMusicPlay)
                 {
-                    player.Play(txtKron, playlist);
+                    player.Play(txtKron, playlist, progress);
                     isMusicPlay = true;
                     ImageBrush tempImg = new ImageBrush();
                     tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));

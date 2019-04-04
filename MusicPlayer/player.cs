@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Timers;
 
 namespace MusicPlayer
 {
@@ -22,38 +23,48 @@ namespace MusicPlayer
         public System.Windows.Media.MediaPlayer _player;
         public int currentSongID =-1;
         public double volume = 0.1;
+        Timer sync;
+        public bool test;
+        double i = 0;
 
         public void SongNameLabel(Label txtKron, string content)
         {
             txtKron.Content = content;
         }
-        public void Play(Label txtKron, Playlist playlist)
+        public void Play(Label txtKron, Playlist playlist, ProgressBar progress)
         {
             _player = new System.Windows.Media.MediaPlayer();
-            _player.MediaEnded += delegate { NextSong(playlist, txtKron); };
+            _player.MediaEnded += delegate { NextSong(playlist, txtKron, progress); };
             SongNameLabel(txtKron, playlist.listOfFiles[0][1]);
             Uri uri = new Uri(playlist.listOfFiles[0][0]);
             _player.Open(uri);
+            _player.MediaOpened += delegate {SetMax(progress); };
             currentSongID = 0;
             _player.Play();
+            SetTimer(progress);
             _player.Volume = volume;
         }
+
         public void Play() //resume
         {
             _player.Volume = volume;
             _player.Play();
+            sync.Start();
         }
         public void Pause()
         {
             _player.Pause();
+            sync.Stop();
         }
 
         public void Stop()
         {
             _player.Stop();
+            sync.Stop();
         }
-        public void NextSong(Playlist playlist, Label txtKron)
+        public void NextSong(Playlist playlist, Label txtKron, ProgressBar progress)
         {
+            i = 0;
             if (currentSongID != -1)
             {
                 if (currentSongID < playlist.playlistSize - 1)
@@ -76,8 +87,9 @@ namespace MusicPlayer
                 }
             }
         }
-        public void PreviousSong(Playlist playlist, Label txtKron)
+        public void PreviousSong(Playlist playlist, Label txtKron, ProgressBar progress)
         {
+            i = 0;
             if (currentSongID != -1)
             {
                 if (currentSongID == 0)
@@ -125,9 +137,21 @@ namespace MusicPlayer
                 }
             }   
         }
-        public void UpdateProgressBar(ProgressBar progress)
+        public void SetTimer(ProgressBar progress)
         {
-
+            sync = new System.Timers.Timer(1000);
+            sync.Elapsed += delegate { UpdateProgressBar(progress); };
+            sync.AutoReset = true;
+            sync.Enabled = true;
+        }
+        private void UpdateProgressBar(ProgressBar progress)
+        {
+            progress.Dispatcher.BeginInvoke(new Action(() => { progress.Value = i; }));
+            i++;
+        }
+        private void SetMax(ProgressBar progress)
+        {
+            progress.Maximum = _player.NaturalDuration.TimeSpan.TotalSeconds;
         }
     }
 }
