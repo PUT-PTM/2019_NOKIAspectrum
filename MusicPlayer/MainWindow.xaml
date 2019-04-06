@@ -5,50 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicPlayer"
         mc:Ignorable="d"
-        Title="STM32 Music Player" Height="350" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Icon="Assets/logo.png">
-    <Grid Name="_window">
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FF171923" Offset="0"/>
-                <GradientStop Color="#FF222431" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Button x:Name="closeButton" Margin="310,0,0,310" Style="{StaticResource btn}">
+        Title="STM32 Music Player" Height="200" Width="440" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Icon="Assets/logo.png">
+    <Grid Name="_window" Background="#FF323131">
+        <Button x:Name="closeButton" Margin="420,0,0,180" Style="{StaticResource btn}">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/closeButton.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="playButton" Margin="0,85,0,0" Style="{StaticResource btn}">
+        <Button x:Name="playButton" Margin="0,105,0,0" Style="{StaticResource btn}">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/playButton.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="stopButton" Margin="0,85,180,0" Style="{StaticResource btn}">
+        <Button x:Name="stopButton" Margin="0,105,160,0" Style="{StaticResource btn}">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/stopButton.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="nextButton" Margin="196,195,108,110" Style="{StaticResource btn}" Width="46">
+        <Button x:Name="nextButton" Margin="90,105,0,0" Style="{StaticResource btn}" Width="46">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/nextButton.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="previousButton" Margin="106,195,198,110" Style="{StaticResource btn}" Width="46">
+        <Button x:Name="previousButton" Margin="0,105,90,0" Style="{StaticResource btn}" Width="46">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="Assets/previousButton.png"/>
             </Button.Background>
         </Button>
-        <ProgressBar Name="volume" Height="15" Width="100" Margin="240,85,0,0" Minimum="0" Maximum="100" Cursor="Hand" Foreground="#FFFA6000" Value="10" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        <TextBlock Width="100" Height="15" Margin="240,85,0,0" Foreground="WhiteSmoke" FontSize="10" TextAlignment="Center">Volume<TextBlock Name="volumeValue" Margin="2,0,0,0" Width="22.5" FontSize="10" TextAlignment="Center" Foreground="WhiteSmoke" Text="10%"></TextBlock></TextBlock>
-        <ProgressBar Name="progress" Width="350" Height="15" Cursor="Hand" Foreground="#FFFA6000" Minimum="0" Maximum="100" Value="0" Margin="0,180,0,0" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <ProgressBar Name="volume" Height="15" Width="100" Margin="0,105,310,0" Minimum="0" Maximum="100" Cursor="Hand" Foreground="#FFFA6000" Value="10" BorderBrush="{x:Null}" Background="#FF292828"/>
+        <TextBlock Width="100" Height="15" Margin="0,105,310,0" Foreground="WhiteSmoke" FontSize="10" TextAlignment="Center">Volume<TextBlock Name="volumeValue" Margin="2,0,0,0" Width="24" FontSize="10" TextAlignment="Center" Foreground="WhiteSmoke" Text="10%"></TextBlock></TextBlock>
+        <ProgressBar Name="progress" Width="440" Height="20" Cursor="Hand" Foreground="#FFFA6000" Minimum="0" Maximum="100" Value="0" Margin="0,180,0,0" BorderBrush="{x:Null}" Background="#FF292828"/>
         <StackPanel Orientation="Horizontal" x:Name="stack" Grid.Column="0" Margin="0">
             <StackPanel.Resources>
                 <local:NegatingConverter x:Key="NegatingConverter" />
                 <Storyboard x:Key="slide">
-                    <DoubleAnimation From="{Binding ActualWidth, ElementName=stack}" To="{Binding ActualWidth, ElementName=txtKron, Converter={StaticResource NegatingConverter}}" Duration="00:00:20" Storyboard.TargetProperty="X" Storyboard.TargetName="transferCurreny2" RepeatBehavior="Forever"/>
+                    <DoubleAnimation From="{Binding ActualWidth, ElementName=stack}" To="{Binding ActualWidth, ElementName=txtKron, Converter={StaticResource NegatingConverter}}" Duration="00:00:17" Storyboard.TargetProperty="X" Storyboard.TargetName="transferCurreny2" RepeatBehavior="Forever"/>
                 </Storyboard>
             </StackPanel.Resources>
-            <Label Content="Brak elementów do odtwarzania" x:Name="txtKron" Canvas.Left="0" Foreground="WhiteSmoke" Padding="0" Margin="0" VerticalAlignment="Center" FontSize="18">
+            <Label Content="Brak elementów do odtwarzania" x:Name="txtKron" Canvas.Left="0" Foreground="WhiteSmoke" Padding="0" Margin="0,35,0,0" VerticalAlignment="Center" FontSize="14">
                 <Label.Triggers>
                     <EventTrigger RoutedEvent="Label.Loaded">
                         <BeginStoryboard Storyboard="{StaticResource slide}"/>
