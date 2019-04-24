@@ -71,14 +71,11 @@ namespace MusicPlayer
                     isMusicPlay = false;
                     break;
                 case "stopButton": //stop
-                    if (isMusicPlay)
-                    {
-                        player.Stop();
+                        player.Stop(progress);
                         tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/playButton.png"));
                         playButton.Background = tempImg;
                         playButton.Name = "playButton";
                         isMusicPlay = false;
-                    }
                     break;
                 case "nextButton": //next
                     if (playlist.playlistSize !=0)

@@ -57,9 +57,11 @@ namespace MusicPlayer
             sync.Stop();
         }
 
-        public void Stop()
+        public void Stop(ProgressBar progress)
         {
             _player.Stop();
+            i = 0;
+            progress.Value = 0;
             sync.Stop();
         }
         public void NextSong(Playlist playlist, Label txtKron, ProgressBar progress)
