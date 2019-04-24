@@ -113,7 +113,7 @@ namespace MusicPlayer
                 }
             }
         }
-        public void Volume(double change, ProgressBar volumeBar, TextBlock volumeValue, bool isMusicPlay)
+        public void Volume(double change, ProgressBar volumeBar, TextBlock volumeValue, string isMusicPlay)
         {
             if (volume >= 1 && change > 0)
             {
@@ -126,7 +126,7 @@ namespace MusicPlayer
             else
             {
                 volume += change;
-                if (isMusicPlay)
+                if (isMusicPlay == "playing")
                 {
                     _player.Volume = volume;
                     volumeBar.Value = volume * 100;

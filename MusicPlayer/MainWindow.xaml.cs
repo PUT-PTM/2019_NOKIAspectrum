@@ -20,7 +20,7 @@ namespace MusicPlayer
     public partial class MainWindow : Window
     {
 
-        public bool isMusicPlay = false;
+        public string isMusicPlay = "stopped";
         Playlist playlist = new Playlist();
         Player player = new Player();
         public MainWindow()
@@ -60,7 +60,7 @@ namespace MusicPlayer
                         tempBtn.Background = tempImg;
                         tempBtn.Name = "pauseButton";
                         player.Play();
-                        isMusicPlay = true;
+                        isMusicPlay = "playing";
                     }
                     break;
                 case "pauseButton": //pause
@@ -68,14 +68,18 @@ namespace MusicPlayer
                     tempBtn.Background = tempImg;
                     tempBtn.Name = "playButton";
                     player.Pause();
-                    isMusicPlay = false;
+                    isMusicPlay = "paused";
                     break;
                 case "stopButton": //stop
+                    if(isMusicPlay == "playing" || isMusicPlay == "paused")
+                    {
                         player.Stop(progress);
                         tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/playButton.png"));
                         playButton.Background = tempImg;
                         playButton.Name = "playButton";
-                        isMusicPlay = false;
+                        isMusicPlay = "stopped";
+                    }
+                        
                     break;
                 case "nextButton": //next
                     if (playlist.playlistSize !=0)
@@ -84,7 +88,7 @@ namespace MusicPlayer
                         tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
                         playButton.Background = tempImg;
                         playButton.Name = "pauseButton";
-                        isMusicPlay = true;
+                        isMusicPlay = "playing";
                     }
                     break;
                 case "previousButton": //previous
@@ -94,7 +98,7 @@ namespace MusicPlayer
                         tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
                         playButton.Background = tempImg;
                         playButton.Name = "pauseButton";
-                        isMusicPlay = true;
+                        isMusicPlay = "playing";
                     }
                     break;
                 case "closeButton": //close
@@ -130,10 +134,10 @@ namespace MusicPlayer
             {
                 tempFile = (string[])e.Data.GetData(DataFormats.FileDrop);
                 playlist.AddFile(tempFile);
-                if (!isMusicPlay)
+                if (isMusicPlay == "stopped")
                 {
                     player.Play(txtKron, playlist, progress);
-                    isMusicPlay = true;
+                    isMusicPlay = "playing";
                     ImageBrush tempImg = new ImageBrush();
                     tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
                     playButton.Background = tempImg;
