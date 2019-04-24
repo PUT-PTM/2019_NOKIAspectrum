@@ -22,6 +22,7 @@ Everything You need to compile is press F5.
 - Change volume with click on ProgressBar
 - Drop multiple files
 - After start check standard input
+- FFT
 
 ## License
 - MIT
