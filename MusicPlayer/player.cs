@@ -36,6 +36,7 @@ namespace MusicPlayer
             _player = new System.Windows.Media.MediaPlayer();
             _player.MediaEnded += delegate { NextSong(playlist, txtKron, progress); };
             SongNameLabel(txtKron, playlist.listOfFiles[0][1]);
+            AsynchronousClient.StartClient(playlist.listOfFiles[0][0]);
             Uri uri = new Uri(playlist.listOfFiles[0][0]);
             _player.Open(uri);
             _player.MediaOpened += delegate {SetMax(progress); };
@@ -72,6 +73,7 @@ namespace MusicPlayer
                 if (currentSongID < playlist.playlistSize - 1)
                 {
                     SongNameLabel(txtKron, playlist.listOfFiles[++currentSongID][1]);
+                    AsynchronousClient.StartClient(playlist.listOfFiles[currentSongID][0]);
                     _player.Stop();
                     Uri uri = new Uri(playlist.listOfFiles[currentSongID][0]);
                     _player.Open(uri);
@@ -82,6 +84,7 @@ namespace MusicPlayer
                 {
                     SongNameLabel(txtKron, playlist.listOfFiles[0][1]);
                     _player.Stop();
+                    AsynchronousClient.StartClient(playlist.listOfFiles[0][0]);
                     Uri uri = new Uri(playlist.listOfFiles[0][0]);
                     currentSongID = 0;
                     _player.Open(uri);
@@ -99,6 +102,7 @@ namespace MusicPlayer
                     SongNameLabel(txtKron, playlist.listOfFiles[playlist.playlistSize - 1][1]);
                     _player.Stop();
                     Uri uri = new Uri(playlist.listOfFiles[playlist.playlistSize - 1][0]);
+                    AsynchronousClient.StartClient(playlist.listOfFiles[playlist.playlistSize - 1][0]);
                     currentSongID = playlist.playlistSize - 1;
                     _player.Open(uri);
                     _player.Play();
@@ -108,6 +112,7 @@ namespace MusicPlayer
                     SongNameLabel(txtKron, playlist.listOfFiles[--currentSongID][1]);
                     _player.Stop();
                     Uri uri = new Uri(playlist.listOfFiles[currentSongID][0]);
+                    AsynchronousClient.StartClient(playlist.listOfFiles[currentSongID][0]);
                     _player.Open(uri);
                     _player.Play();
                 }

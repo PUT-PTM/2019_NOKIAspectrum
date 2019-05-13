@@ -55,6 +55,7 @@
                     <TranslateTransform x:Name="transferCurreny2" X="0"/>
                 </Label.RenderTransform>
             </Label>
+            <Button x:Name="spectrum" Content="Button" Height="23" Margin="0,5,0,0" VerticalAlignment="Top" Width="167"/>
         </StackPanel>
     </Grid>
 </Window>

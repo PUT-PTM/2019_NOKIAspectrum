@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace MusicPlayer
 {
@@ -42,6 +43,7 @@ namespace MusicPlayer
             closeButton.Click += ClickEvent;
             closeButton.MouseEnter += MouseOverButton;
             closeButton.MouseLeave += MouseLeaveButton;
+            spectrum.Click += delegate { Thread thr = new Thread(new ThreadStart(AsynchronousSocketListener.StartListening)); thr.Start(); };
             _window.Drop += DropFile;
             _window.MouseLeftButtonDown += WindowDrag;
             _window.MouseWheel += VolumeChange;
