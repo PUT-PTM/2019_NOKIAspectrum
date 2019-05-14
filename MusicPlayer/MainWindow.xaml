@@ -44,10 +44,10 @@
             </StackPanel.Resources>
             <Label Content="Brak elementów do odtwarzania" x:Name="txtKron" Canvas.Left="0" Foreground="WhiteSmoke" Padding="0" Margin="0,35,0,0" VerticalAlignment="Center" FontSize="14">
                 <Label.Triggers>
-                    <EventTrigger RoutedEvent="Label.Loaded">
+                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
                         <BeginStoryboard Storyboard="{StaticResource slide}"/>
                     </EventTrigger>
-                    <EventTrigger RoutedEvent="Label.SizeChanged">
+                    <EventTrigger RoutedEvent="FrameworkElement.SizeChanged">
                         <BeginStoryboard Storyboard="{StaticResource slide}"/>
                     </EventTrigger>
                 </Label.Triggers>
@@ -55,7 +55,327 @@
                     <TranslateTransform x:Name="transferCurreny2" X="0"/>
                 </Label.RenderTransform>
             </Label>
-            <Button x:Name="spectrum" Content="Button" Height="23" Margin="0,5,0,0" VerticalAlignment="Top" Width="167"/>
+            <Button x:Name="spectrum" Content="Spectrum" Height="25" Margin="150,1,0,0" VerticalAlignment="Top" Width="60"/>
         </StackPanel>
+        <ProgressBar Name="bar0" Width="75" Height="8" Margin="29,65,336,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Maximum="0.016" Value="1">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar1" Width="75" Height="8" Margin="39,65,326,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar2" Width="75" Height="8" Margin="49,65,316,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar3" Width="75" Height="8" Margin="59,65,306,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar4" Width="75" Height="8" Margin="69,65,296,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar5" Width="75" Height="8" Margin="79,65,286,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar6" Width="75" Height="8" Margin="89,65,276,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar7" Width="75" Height="8" Margin="99,65,266,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar8" Width="75" Height="8" Margin="109,65,256,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar9" Width="75" Height="8" Margin="119,65,246,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar10" Width="75" Height="8" Margin="129,65,236,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar11" Width="75" Height="8" Margin="139,65,226,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar12" Width="75" Height="8" Margin="149,65,216,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar13" Width="75" Height="8" Margin="159,65,206,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar14" Width="75" Height="8" Margin="169,65,196,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar15" Width="75" Height="8" Margin="179,65,186,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar16" Width="75" Height="8" Margin="189,65,176,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar17" Width="75" Height="8" Margin="199,65,166,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar18" Width="75" Height="8" Margin="209,65,156,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar19" Width="75" Height="8" Margin="219,65,146,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar20" Width="75" Height="8" Margin="229,65,136,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar21" Width="75" Height="8" Margin="239,65,126,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar22" Width="75" Height="8" Margin="249,65,116,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar23" Width="75" Height="8" Margin="259,65,106,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar24" Width="75" Height="8" Margin="269,65,96,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar25" Width="75" Height="8" Margin="279,65,86,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar26" Width="75" Height="8" Margin="289,65,76,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar27" Width="75" Height="8" Margin="299,65,66,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar28" Width="75" Height="8" Margin="309,65,56,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar29" Width="75" Height="8" Margin="319,65,46,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar30" Width="75" Height="8" Margin="329,65,36,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <ProgressBar Name="bar31" Width="75" Height="8" Margin="339,65,26,127" Foreground="#FFFA6000" BorderBrush="{x:Null}" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Value="100" Maximum="0.016">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
     </Grid>
 </Window>

@@ -55,6 +55,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AsynchronousSocketListener.cs" />
+    <Compile Include="Spectrum.cs" />
     <Compile Include="UrlClient.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

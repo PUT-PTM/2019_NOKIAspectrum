@@ -23,6 +23,7 @@ namespace MusicPlayer
     {
         // Thread signal.  
         public static ManualResetEvent allDone = new ManualResetEvent(false);
+        public static float[] fastFourierTransformData = new float[32];
 
         public AsynchronousSocketListener()
         {
@@ -113,24 +114,13 @@ namespace MusicPlayer
                 {
                     // All the data has been read from the   
                     // client. Display it on the console.
-                    //Console.Write("Data: ");
-                    //Console.WriteLine("{0} ", GetContent(content));
-                    //content = GetContent(content);
                     string[] temporaryData = Regex.Split(content, @";");
                     temporaryData.Take(temporaryData.Count() - 1).ToArray();
-                    //foreach (var value in temporaryData)
-                    //{
-                    //    Console.WriteLine(value);
-                    //}
-                    float[] fastFourierTransformData = new float[temporaryData.Length - 1];
                     for (int i = 0; i < fastFourierTransformData.Length; i++)
                     {
                         fastFourierTransformData[i] = float.Parse(temporaryData[i]);
                     }
-                    //foreach (var value in fastFourierTransformData)
-                    //{
-                    //    Console.WriteLine(value);
-                    //}
+
                     // Echo the data back to the client.  
                     //Send(handler, content); 
                 }

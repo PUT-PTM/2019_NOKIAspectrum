@@ -160,5 +160,6 @@ namespace MusicPlayer
         {
             progress.Maximum = _player.NaturalDuration.TimeSpan.TotalSeconds;
         }
+
     }
 }

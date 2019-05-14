@@ -15,6 +15,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
+using System.Timers;
 
 namespace MusicPlayer
 {
@@ -24,6 +25,9 @@ namespace MusicPlayer
         public string isMusicPlay = "stopped";
         Playlist playlist = new Playlist();
         Player player = new Player();
+        Spectrum spectrumEdit = new Spectrum();
+        ProgressBar[] bars;
+        System.Timers.Timer sync;
         public MainWindow()
         {
             InitializeComponent();
@@ -43,10 +47,12 @@ namespace MusicPlayer
             closeButton.Click += ClickEvent;
             closeButton.MouseEnter += MouseOverButton;
             closeButton.MouseLeave += MouseLeaveButton;
-            spectrum.Click += delegate { Thread thr = new Thread(new ThreadStart(AsynchronousSocketListener.StartListening)); thr.Start(); };
+            spectrum.Click += delegate { Thread thr = new Thread(new ThreadStart(AsynchronousSocketListener.StartListening)); thr.Start();};
             _window.Drop += DropFile;
             _window.MouseLeftButtonDown += WindowDrag;
             _window.MouseWheel += VolumeChange;
+            bars = new ProgressBar[32] {bar0, bar1, bar2, bar3, bar4, bar5, bar6, bar7, bar8, bar9, bar10, bar11, bar12, bar13, bar14, bar15, bar16, bar17, bar18, bar19, bar20, bar21, bar22, bar23, bar24, bar25, bar26, bar27, bar28, bar29, bar30, bar31 };
+            SetTimer(bars, AsynchronousSocketListener.fastFourierTransformData);
         }
 
         public void ClickEvent(object sender, RoutedEventArgs e)
@@ -159,6 +165,17 @@ namespace MusicPlayer
                 player.Volume(0.02, volume, volumeValue, isMusicPlay);
             }
             else player.Volume(-0.02, volume, volumeValue, isMusicPlay);
+        }
+        public void SetTimer(ProgressBar[] bars, float[] spectrumData)
+        {
+            sync = new System.Timers.Timer(10);
+            sync.Elapsed += delegate { updateSpectrum(bars, spectrumData); };
+            sync.AutoReset = true;
+            sync.Enabled = true;
+        }
+        public void updateSpectrum(ProgressBar[] bars, float[] spectrumData)
+        {
+            Spectrum.Start(bars, spectrumData);
         }
     }
 }
