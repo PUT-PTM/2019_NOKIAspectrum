@@ -28,6 +28,8 @@ namespace MusicPlayer
         Spectrum spectrumEdit = new Spectrum();
         ProgressBar[] bars;
         System.Timers.Timer sync;
+        bool isSpectrumOn = false;
+        Thread thr = new Thread(new ThreadStart(AsynchronousSocketListener.StartListening));
         public MainWindow()
         {
             InitializeComponent();
@@ -47,7 +49,9 @@ namespace MusicPlayer
             closeButton.Click += ClickEvent;
             closeButton.MouseEnter += MouseOverButton;
             closeButton.MouseLeave += MouseLeaveButton;
-            spectrum.Click += delegate { Thread thr = new Thread(new ThreadStart(AsynchronousSocketListener.StartListening)); thr.Start();};
+            spectrumButton.Click += delegate {thr.Start(); ImageBrush tempImg = new ImageBrush(); tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/spectrumButton2.png")); spectrumButton.Background = tempImg; spectrumButton.Height = 20; spectrumButton.Width = 25; isSpectrumOn = true; };
+            spectrumButton.MouseEnter += MouseOverSpectrumButton;
+            spectrumButton.MouseLeave += MouseLeaveSpectrumButton;
             _window.Drop += DropFile;
             _window.MouseLeftButtonDown += WindowDrag;
             _window.MouseWheel += VolumeChange;
@@ -110,7 +114,14 @@ namespace MusicPlayer
                     }
                     break;
                 case "closeButton": //close
-                    this.Close();
+                    //this.Close();
+
+                    if (isSpectrumOn == true)
+                    {
+                        thr.Abort();
+                        player.UnityClose();
+                    }
+                    System.Environment.Exit(1);
                     break;
             }
 
@@ -144,7 +155,7 @@ namespace MusicPlayer
                 playlist.AddFile(tempFile);
                 if (isMusicPlay == "stopped")
                 {
-                    player.Play(txtKron, playlist, progress);
+                    player.Play(txtKron, playlist, progress, isSpectrumOn);
                     isMusicPlay = "playing";
                     ImageBrush tempImg = new ImageBrush();
                     tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
@@ -176,6 +187,34 @@ namespace MusicPlayer
         public void updateSpectrum(ProgressBar[] bars, float[] spectrumData)
         {
             Spectrum.Start(bars, spectrumData);
+        }
+        public void MouseOverSpectrumButton(object sender, MouseEventArgs e)
+        {
+            if (isSpectrumOn == true) { }
+            else
+            {
+                var button = (Button)sender;
+                ImageBrush tempImg = new ImageBrush();
+                string tempURL = "pack://application:,,,/Assets/" + button.Name + "2.png";
+                tempImg.ImageSource = new BitmapImage(new Uri(@tempURL));
+                button.Background = tempImg;
+                button.Height = 25;
+                button.Width = 30;
+            }
+        }
+        public void MouseLeaveSpectrumButton(object sender, MouseEventArgs e)
+        {
+            if (isSpectrumOn == true) { }
+            else
+            {
+                var button = (Button)sender;
+                ImageBrush tempImg = new ImageBrush();
+                string tempURL = "pack://application:,,,/Assets/" + button.Name + ".png";
+                tempImg.ImageSource = new BitmapImage(new Uri(@tempURL));
+                button.Background = tempImg;
+                button.Height = 20;
+                button.Width = 25;
+            }
         }
     }
 }

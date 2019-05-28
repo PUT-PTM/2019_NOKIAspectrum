@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Media;
+using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,20 +25,27 @@ namespace MusicPlayer
         public System.Windows.Media.MediaPlayer _player;
         public int currentSongID =-1;
         public double volume = 0.1;
-        Timer sync;
+        System.Timers.Timer sync;
         public bool test;
         double i = 0;
+        public System.Diagnostics.Process unity = new System.Diagnostics.Process();
 
         public void SongNameLabel(Label txtKron, string content)
         {
             txtKron.Content = content;
         }
-        public void Play(Label txtKron, Playlist playlist, ProgressBar progress)
+        public void Play(Label txtKron, Playlist playlist, ProgressBar progress, bool isSpectrumOn)
         {
             _player = new System.Windows.Media.MediaPlayer();
             _player.MediaEnded += delegate { NextSong(playlist, txtKron, progress); };
             SongNameLabel(txtKron, playlist.listOfFiles[0][1]);
-            AsynchronousClient.StartClient(playlist.listOfFiles[0][0]);
+            if (playlist.listOfFiles[0][2] == ".wav" && isSpectrumOn == true)
+            {
+                //UnityLaunch();
+                //Thread.Sleep(2150);
+                //Thread.Sleep(1000);
+                AsynchronousClient.StartClient(playlist.listOfFiles[0][0]);
+            }
             Uri uri = new Uri(playlist.listOfFiles[0][0]);
             _player.Open(uri);
             _player.MediaOpened += delegate {SetMax(progress); };
@@ -73,7 +82,7 @@ namespace MusicPlayer
                 if (currentSongID < playlist.playlistSize - 1)
                 {
                     SongNameLabel(txtKron, playlist.listOfFiles[++currentSongID][1]);
-                    AsynchronousClient.StartClient(playlist.listOfFiles[currentSongID][0]);
+                    if(playlist.listOfFiles[currentSongID][2] == ".wav") AsynchronousClient.StartClient(playlist.listOfFiles[currentSongID][0]);
                     _player.Stop();
                     Uri uri = new Uri(playlist.listOfFiles[currentSongID][0]);
                     _player.Open(uri);
@@ -84,7 +93,7 @@ namespace MusicPlayer
                 {
                     SongNameLabel(txtKron, playlist.listOfFiles[0][1]);
                     _player.Stop();
-                    AsynchronousClient.StartClient(playlist.listOfFiles[0][0]);
+                    if (playlist.listOfFiles[0][2] == ".wav") AsynchronousClient.StartClient(playlist.listOfFiles[0][0]);
                     Uri uri = new Uri(playlist.listOfFiles[0][0]);
                     currentSongID = 0;
                     _player.Open(uri);
@@ -102,7 +111,7 @@ namespace MusicPlayer
                     SongNameLabel(txtKron, playlist.listOfFiles[playlist.playlistSize - 1][1]);
                     _player.Stop();
                     Uri uri = new Uri(playlist.listOfFiles[playlist.playlistSize - 1][0]);
-                    AsynchronousClient.StartClient(playlist.listOfFiles[playlist.playlistSize - 1][0]);
+                    if (playlist.listOfFiles[playlist.playlistSize - 1][2] == ".wav") AsynchronousClient.StartClient(playlist.listOfFiles[playlist.playlistSize - 1][0]);
                     currentSongID = playlist.playlistSize - 1;
                     _player.Open(uri);
                     _player.Play();
@@ -112,7 +121,7 @@ namespace MusicPlayer
                     SongNameLabel(txtKron, playlist.listOfFiles[--currentSongID][1]);
                     _player.Stop();
                     Uri uri = new Uri(playlist.listOfFiles[currentSongID][0]);
-                    AsynchronousClient.StartClient(playlist.listOfFiles[currentSongID][0]);
+                    if (playlist.listOfFiles[currentSongID][2] == ".wav") AsynchronousClient.StartClient(playlist.listOfFiles[currentSongID][0]);
                     _player.Open(uri);
                     _player.Play();
                 }
@@ -160,6 +169,22 @@ namespace MusicPlayer
         {
             progress.Maximum = _player.NaturalDuration.TimeSpan.TotalSeconds;
         }
-
+        private void UnityLaunch()
+        {
+            // unity.StartInfo.FileName = @"C:\Users\cwkoka\Desktop\ConsoleApp1.exe"; //ustawienia dla aplikacji konsolowej
+            // unity.StartInfo.UseShellExecute = false;
+            // unity.StartInfo.CreateNoWindow = true;
+            unity.StartInfo.FileName = @"D:\PTM - Projekt\Spectrum_Unity\Equalizer Unity.exe";
+            //unity.StartInfo.FileName = @"‪‪D:\PTM - Projekt\SpectrumUnity\Equalizer Unity.exe";
+            unity.StartInfo.CreateNoWindow = true;
+            unity.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
+            unity.StartInfo.UseShellExecute = true;
+            unity.Start();
+        }
+        public void UnityClose()
+        {
+            //unity.Kill();
+            //unity.WaitForExit();
+        }
     }
 }
