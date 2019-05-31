@@ -43,7 +43,7 @@ namespace MusicPlayer
             {
                 //UnityLaunch();
                 //Thread.Sleep(2150);
-                //Thread.Sleep(1000);
+                //Thread.Sleep(2485);
                 AsynchronousClient.StartClient(playlist.listOfFiles[0][0]);
             }
             Uri uri = new Uri(playlist.listOfFiles[0][0]);
@@ -174,12 +174,12 @@ namespace MusicPlayer
             // unity.StartInfo.FileName = @"C:\Users\cwkoka\Desktop\ConsoleApp1.exe"; //ustawienia dla aplikacji konsolowej
             // unity.StartInfo.UseShellExecute = false;
             // unity.StartInfo.CreateNoWindow = true;
-            unity.StartInfo.FileName = @"D:\PTM - Projekt\Spectrum_Unity\Equalizer Unity.exe";
-            //unity.StartInfo.FileName = @"‪‪D:\PTM - Projekt\SpectrumUnity\Equalizer Unity.exe";
-            unity.StartInfo.CreateNoWindow = true;
-            unity.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
-            unity.StartInfo.UseShellExecute = true;
-            unity.Start();
+            //unity.StartInfo.FileName = @"D:\PTM - Projekt\Spectrum_Unity\Equalizer Unity.exe";
+            ////unity.StartInfo.FileName = @"‪‪D:\PTM - Projekt\SpectrumUnity\Equalizer Unity.exe";
+            //unity.StartInfo.CreateNoWindow = true;
+            //unity.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
+            //unity.StartInfo.UseShellExecute = true;
+            //unity.Start();
         }
         public void UnityClose()
         {

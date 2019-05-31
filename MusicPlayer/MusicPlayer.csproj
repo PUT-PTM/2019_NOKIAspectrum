@@ -57,6 +57,7 @@
     <Compile Include="AsynchronousSocketListener.cs" />
     <Compile Include="Spectrum.cs" />
     <Compile Include="UrlClient.cs" />
+    <Compile Include="USB.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

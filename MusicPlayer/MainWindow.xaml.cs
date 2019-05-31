@@ -29,6 +29,7 @@ namespace MusicPlayer
         ProgressBar[] bars;
         System.Timers.Timer sync;
         bool isSpectrumOn = false;
+        USB comPort = new USB();
         Thread thr = new Thread(new ThreadStart(AsynchronousSocketListener.StartListening));
         public MainWindow()
         {
@@ -56,7 +57,7 @@ namespace MusicPlayer
             _window.MouseLeftButtonDown += WindowDrag;
             _window.MouseWheel += VolumeChange;
             bars = new ProgressBar[32] {bar0, bar1, bar2, bar3, bar4, bar5, bar6, bar7, bar8, bar9, bar10, bar11, bar12, bar13, bar14, bar15, bar16, bar17, bar18, bar19, bar20, bar21, bar22, bar23, bar24, bar25, bar26, bar27, bar28, bar29, bar30, bar31 };
-            SetTimer(bars, AsynchronousSocketListener.fastFourierTransformData);
+            SetTimer(bars, AsynchronousSocketListener.fastFourierTransformData, AsynchronousSocketListener.test);
         }
 
         public void ClickEvent(object sender, RoutedEventArgs e)
@@ -177,16 +178,17 @@ namespace MusicPlayer
             }
             else player.Volume(-0.02, volume, volumeValue, isMusicPlay);
         }
-        public void SetTimer(ProgressBar[] bars, float[] spectrumData)
+        public void SetTimer(ProgressBar[] bars, float[] spectrumData, int[] spectrumDataInt)
         {
             sync = new System.Timers.Timer(10);
-            sync.Elapsed += delegate { updateSpectrum(bars, spectrumData); };
+            sync.Elapsed += delegate { updateSpectrum(bars, spectrumData, spectrumDataInt); };
             sync.AutoReset = true;
             sync.Enabled = true;
         }
-        public void updateSpectrum(ProgressBar[] bars, float[] spectrumData)
+        public void updateSpectrum(ProgressBar[] bars, float[] spectrumData, int[] spectrumDataInt)
         {
             Spectrum.Start(bars, spectrumData);
+            comPort.WriteData(spectrumDataInt);
         }
         public void MouseOverSpectrumButton(object sender, MouseEventArgs e)
         {

@@ -24,6 +24,7 @@ namespace MusicPlayer
         // Thread signal.  
         public static ManualResetEvent allDone = new ManualResetEvent(false);
         public static float[] fastFourierTransformData = new float[32];
+        public static int[] test = new int[32];
 
         public AsynchronousSocketListener()
         {
@@ -119,6 +120,7 @@ namespace MusicPlayer
                     for (int i = 0; i < fastFourierTransformData.Length; i++)
                     {
                         fastFourierTransformData[i] = float.Parse(temporaryData[i]);
+                        test[i] = (int)(fastFourierTransformData[i] * 10000);
                     }
 
                     // Echo the data back to the client.  
