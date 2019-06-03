@@ -12,8 +12,8 @@ namespace MusicPlayer
         SerialPort comPort = new SerialPort();
         public USB()
         {
-            comPort.PortName = "COM1"; // to check
-            comPort.BaudRate = 9600; // 8 czy 9600?
+            comPort.PortName = "COM8"; // to check
+            comPort.BaudRate = 9600;
             comPort.DataBits = 8;
             comPort.WriteTimeout = 100;
             comPort.Open();
