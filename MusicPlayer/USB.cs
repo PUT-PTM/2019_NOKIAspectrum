@@ -32,9 +32,11 @@ namespace MusicPlayer
         */
         public void WriteData(int[] fftData)
         {
+            int[] band = ConsolideBands(fftData);
             for (int i = 0; i < fftData.Length; i++)
             {
-               comPort.Write(SetBand(fftData[i]).ToString());
+               
+               comPort.Write(SetBand(band[i]).ToString());
             }
         }
         private int SetBand(int value)
@@ -49,6 +51,19 @@ namespace MusicPlayer
             else if (value > 34 && value < 40) tmp = 7;
             else if (value > 39) tmp = 8;
             return tmp;
+        }
+        private int[] ConsolideBands(int[] fftData)
+        {
+            int[] band = new int[16];
+            band[0] = fftData[0];
+            band[1] = fftData[1];
+            band[2] = fftData[2];
+            band[3] = fftData[3];
+            for (int i = 4; i < 32; i += 2)
+            {
+                band[i] = (fftData[i] + fftData[i + 1]) / 2;
+            }
+            return band;
         }
         ~USB()
         {
