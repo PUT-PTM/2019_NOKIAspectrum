@@ -98,7 +98,7 @@ namespace MusicPlayer
                 case "nextButton": //next
                     if (playlist.playlistSize !=0)
                     {
-                        player.NextSong(playlist, txtKron, progress);
+                        player.NextSong(playlist, txtKron, progress, isSpectrumOn);
                         tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
                         playButton.Background = tempImg;
                         playButton.Name = "pauseButton";
@@ -108,7 +108,7 @@ namespace MusicPlayer
                 case "previousButton": //previous
                     if (playlist.playlistSize != 0)
                     {
-                        player.PreviousSong(playlist, txtKron, progress);
+                        player.PreviousSong(playlist, txtKron, progress, isSpectrumOn);
                         tempImg.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/Assets/pauseButton.png"));
                         playButton.Background = tempImg;
                         playButton.Name = "pauseButton";

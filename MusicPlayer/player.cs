@@ -37,7 +37,7 @@ namespace MusicPlayer
         public void Play(Label txtKron, Playlist playlist, ProgressBar progress, bool isSpectrumOn)
         {
             _player = new System.Windows.Media.MediaPlayer();
-            _player.MediaEnded += delegate { NextSong(playlist, txtKron, progress); };
+            _player.MediaEnded += delegate { NextSong(playlist, txtKron, progress, isSpectrumOn); };
             SongNameLabel(txtKron, playlist.listOfFiles[0][1]);
             if (playlist.listOfFiles[0][2] == ".wav" && isSpectrumOn == true)
             {
@@ -74,7 +74,7 @@ namespace MusicPlayer
             progress.Value = 0;
             sync.Stop();
         }
-        public void NextSong(Playlist playlist, Label txtKron, ProgressBar progress)
+        public void NextSong(Playlist playlist, Label txtKron, ProgressBar progress, bool isSpectrumOn)
         {
             i = 0;
             if (currentSongID != -1)
@@ -82,7 +82,7 @@ namespace MusicPlayer
                 if (currentSongID < playlist.playlistSize - 1)
                 {
                     SongNameLabel(txtKron, playlist.listOfFiles[++currentSongID][1]);
-                    if(playlist.listOfFiles[currentSongID][2] == ".wav") AsynchronousClient.StartClient(playlist.listOfFiles[currentSongID][0]);
+                    if(playlist.listOfFiles[currentSongID][2] == ".wav" && isSpectrumOn == true) AsynchronousClient.StartClient(playlist.listOfFiles[currentSongID][0]);
                     _player.Stop();
                     Uri uri = new Uri(playlist.listOfFiles[currentSongID][0]);
                     _player.Open(uri);
@@ -93,7 +93,7 @@ namespace MusicPlayer
                 {
                     SongNameLabel(txtKron, playlist.listOfFiles[0][1]);
                     _player.Stop();
-                    if (playlist.listOfFiles[0][2] == ".wav") AsynchronousClient.StartClient(playlist.listOfFiles[0][0]);
+                    if (playlist.listOfFiles[0][2] == ".wav" && isSpectrumOn == true) AsynchronousClient.StartClient(playlist.listOfFiles[0][0]);
                     Uri uri = new Uri(playlist.listOfFiles[0][0]);
                     currentSongID = 0;
                     _player.Open(uri);
@@ -101,7 +101,7 @@ namespace MusicPlayer
                 }
             }
         }
-        public void PreviousSong(Playlist playlist, Label txtKron, ProgressBar progress)
+        public void PreviousSong(Playlist playlist, Label txtKron, ProgressBar progress, bool isSpectrumOn)
         {
             i = 0;
             if (currentSongID != -1)
@@ -111,7 +111,7 @@ namespace MusicPlayer
                     SongNameLabel(txtKron, playlist.listOfFiles[playlist.playlistSize - 1][1]);
                     _player.Stop();
                     Uri uri = new Uri(playlist.listOfFiles[playlist.playlistSize - 1][0]);
-                    if (playlist.listOfFiles[playlist.playlistSize - 1][2] == ".wav") AsynchronousClient.StartClient(playlist.listOfFiles[playlist.playlistSize - 1][0]);
+                    if (playlist.listOfFiles[playlist.playlistSize - 1][2] == ".wav" && isSpectrumOn == true) AsynchronousClient.StartClient(playlist.listOfFiles[playlist.playlistSize - 1][0]);
                     currentSongID = playlist.playlistSize - 1;
                     _player.Open(uri);
                     _player.Play();
@@ -121,7 +121,7 @@ namespace MusicPlayer
                     SongNameLabel(txtKron, playlist.listOfFiles[--currentSongID][1]);
                     _player.Stop();
                     Uri uri = new Uri(playlist.listOfFiles[currentSongID][0]);
-                    if (playlist.listOfFiles[currentSongID][2] == ".wav") AsynchronousClient.StartClient(playlist.listOfFiles[currentSongID][0]);
+                    if (playlist.listOfFiles[currentSongID][2] == ".wav" && isSpectrumOn == true) AsynchronousClient.StartClient(playlist.listOfFiles[currentSongID][0]);
                     _player.Open(uri);
                     _player.Play();
                 }
