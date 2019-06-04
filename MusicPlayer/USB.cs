@@ -16,7 +16,6 @@ namespace MusicPlayer
             comPort.BaudRate = 9600;
             comPort.DataBits = 8;
             comPort.WriteTimeout = 100;
-            comPort.Open();
         }
         /*
         ~0-120
@@ -32,12 +31,14 @@ namespace MusicPlayer
         */
         public void WriteData(int[] fftData)
         {
+            comPort.Open();
             int[] band = ConsolideBands(fftData);
             for (int i = 0; i < band.Length; i++)
             {
                
                comPort.Write(SetBand(band[i]).ToString());
             }
+            comPort.Close();
         }
         private int SetBand(int value)
         {
@@ -55,7 +56,6 @@ namespace MusicPlayer
         private int[] ConsolideBands(int[] fftData)
         {
             int[] band = new int[16];
-            int j = 4;
             band[0] = fftData[0];
             band[1] = fftData[1];
             band[2] = fftData[2];
@@ -73,10 +73,6 @@ namespace MusicPlayer
             band[14] = (fftData[24] + fftData[25]) / 2;
             band[15] = (fftData[26] + fftData[27]) / 2;
             return band;
-        }
-        ~USB()
-        {
-            comPort.Close();
         }
     }
 }
