@@ -43,14 +43,16 @@ namespace MusicPlayer
         public void WriteData(int[] fftData)
         {
             //comPort.Open();
+            string message = string.Empty;
             if (exist)
             {
                 int[] band = ConsolideBands(fftData);
                 for (int i = 0; i < band.Length; i++)
                 {
-
-                    comPort.Write(SetBand(band[i]).ToString());
+                    message += SetBand(band[i]).ToString();
+                    //comPort.Write(SetBand(band[i]).ToString());
                 }
+                comPort.Write(message);
                 //comPort.Close();
             }
 
@@ -88,6 +90,10 @@ namespace MusicPlayer
             band[14] = (fftData[24] + fftData[25]) / 2;
             band[15] = (fftData[26] + fftData[27]) / 2;
             return band;
+        }
+        ~USB()
+        {
+            comPort.Close();
         }
     }
 }
