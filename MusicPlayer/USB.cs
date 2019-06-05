@@ -60,12 +60,12 @@ namespace MusicPlayer
         private int SetBand(int value)
         {
             int tmp = 0;
-            if (value > 0 && value < 10) tmp = 1;
-            else if (value > 9 && value < 15) tmp = 2;
-            else if (value > 14 && value < 20) tmp = 3;
-            else if (value > 19 && value < 25) tmp = 4;
-            else if (value > 24 && value < 30) tmp = 5;
-            else if (value > 29 && value < 35) tmp = 6;
+            if (value > 0 && value < 6) tmp = 1;
+            else if (value > 5 && value < 10) tmp = 2;
+            else if (value > 10 && value < 16) tmp = 3;
+            else if (value > 15 && value < 21) tmp = 4;
+            else if (value > 20 && value < 26) tmp = 5;
+            else if (value > 25 && value < 35) tmp = 6;
             else if (value > 34 && value < 40) tmp = 7;
             else if (value > 39) tmp = 8;
             return tmp;

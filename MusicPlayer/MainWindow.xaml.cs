@@ -190,7 +190,7 @@ namespace MusicPlayer
         {
             //if (isSpectrumOn)
             //{
-                sync = new System.Timers.Timer(100);
+                sync = new System.Timers.Timer(30);
                 sync.Elapsed += delegate { comPort.WriteData(spectrumDataInt); };
                 sync.AutoReset = true;
                 sync.Enabled = true;
