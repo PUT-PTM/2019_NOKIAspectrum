@@ -188,13 +188,13 @@ namespace MusicPlayer
         }
         public void SetTimer(int[] spectrumDataInt)
         {
-            if (isSpectrumOn)
-            {
+            //if (isSpectrumOn)
+            //{
                 sync = new System.Timers.Timer(100);
                 sync.Elapsed += delegate { comPort.WriteData(spectrumDataInt); };
                 sync.AutoReset = true;
                 sync.Enabled = true;
-            }
+            //}
         }
         public void updateSpectrum(ProgressBar[] bars, float[] spectrumData)
         {

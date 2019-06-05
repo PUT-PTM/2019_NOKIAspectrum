@@ -10,12 +10,23 @@ namespace MusicPlayer
     public class USB
     {
         SerialPort comPort = new SerialPort();
+        bool exist = false;
         public USB()
         {
             comPort.PortName = "COM8"; // to check
             comPort.BaudRate = 9600;
             comPort.DataBits = 8;
             comPort.WriteTimeout = 100;
+            try
+            {
+                comPort.Open();
+                exist = true;
+            }
+            catch
+            {
+                exist = false;
+            }
+            
         }
         /*
         ~0-120
@@ -31,14 +42,18 @@ namespace MusicPlayer
         */
         public void WriteData(int[] fftData)
         {
-            comPort.Open();
-            int[] band = ConsolideBands(fftData);
-            for (int i = 0; i < band.Length; i++)
+            //comPort.Open();
+            if (exist)
             {
-               
-               comPort.Write(SetBand(band[i]).ToString());
+                int[] band = ConsolideBands(fftData);
+                for (int i = 0; i < band.Length; i++)
+                {
+
+                    comPort.Write(SetBand(band[i]).ToString());
+                }
+                //comPort.Close();
             }
-            comPort.Close();
+
         }
         private int SetBand(int value)
         {
