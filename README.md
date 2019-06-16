@@ -1,6 +1,8 @@
 # 2019_NOKIAspectrum
 ## Overview
 Desktop app do Fast Fourier Transform, then use USB to communicate with microcontroller. STM interprets data and display them in real-time at HD44780 display as Audio Spectrum.
+
+[![STM32F407 LCD 44790 16x2 Music Spectrum](http://img.youtube.com/vi/ctr9i3woH6g/0.jpg)](http://www.youtube.com/watch?v=ctr9i3woH6g "STM32F407 LCD 44790 16x2 Music Spectrum")
 ## Hardware & software
 - Visual Studio 2017 15.9
 - GIMP 2.10.8
